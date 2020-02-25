@@ -1,5 +1,7 @@
 <?php
 
+// var_dump($_POST);
+
 require 'lib/validators.php';
 
 define('CONTACTS_PATH', 'contacts.csv');

@@ -1,0 +1,22 @@
+<form action="" method="post">
+    <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" id="title" name="title" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="teaser">Accroche</label>
+        <textarea name="teaser" id="teaser" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="content">Contenu</label>
+        <textarea name="content" id="content" class="form-control" >ici</textarea>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input type="hidden" name="published" value="0">
+        <input class="form-check-input" type="checkbox" value="1" name="published" id="published">
+        <label class="form-check-label" for="published">Publier</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+</form>
