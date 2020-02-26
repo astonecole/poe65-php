@@ -1,12 +1,16 @@
 <?php
 
 function buildMenu(array $data) {
-    echo '<ul>';
+    echo '<ul class="menu">';
 
     foreach ($data as $item) {
-        foreach ($item as $link) {
+        if ($item['visible']) {
             echo '<li>';
-                echo '<a href="">item</a>';
+            printf('<a href="%s">%s</a>', $item['link'], $item['name']);
+
+            if (isset($item['menu'])) {
+                buildMenu($item['menu']);
+            }
             echo '</li>';
         }
     }
