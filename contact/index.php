@@ -13,9 +13,11 @@ $email = $_POST['email'] ?? '';
 $phone = $_POST['phone'] ?? '';
 $errors = [];
 
-if (isset($_GET['action']) && isset($_GET['id'])) {
-    if ($_GET['action'] === 'remove') {
-        $id = (int) $_GET['id'];
+$action = $_GET['action'] ?? null;
+$id = $_GET['id'] ?? null;
+
+if ($action && $id >= 0) {
+    if ($action === 'remove') {
         unset($contacts[$id]);
 
         if (saveFile(CONTACTS_PATH, $contacts)) {
@@ -46,7 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'phone' => $phone
         ];
 
-        saveFile(CONTACTS_PATH, $contacts);
+        if (saveFile(CONTACTS_PATH, $contacts)) {
+            header('Location: index.php');
+        }
     }
 }
 
