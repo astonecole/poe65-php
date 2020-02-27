@@ -1,9 +1,6 @@
 <?php
 
-class Lion extends Animal
+class Lion extends Felin
 {
-    public function move()
-    {
-        return 'je me déplace comme un lion';
-    }
+
 }

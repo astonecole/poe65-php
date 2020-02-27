@@ -1,9 +1,9 @@
 <?php
 
-class Chat extends Animal
+class Chat extends Felin
 {
     public function move()
     {
-        return 'je me déplace comme un chat';
+        return parent::move() . ' avec une patte en moins.';
     }
 }
