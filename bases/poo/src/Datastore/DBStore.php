@@ -32,6 +32,6 @@ class DBStore implements StoreHandler
         $stmt->execute();
 
         $data = $stmt->fetch();
-        return  $data['value'] ?? '';
+        return $data['value'] ?? '';
     }
 }
