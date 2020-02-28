@@ -31,6 +31,7 @@ class DBStore implements StoreHandler
         $stmt->bindValue(1, 1, PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetch() ?? '';
+        $data = $stmt->fetch();
+        return  $data['value'] ?? '';
     }
 }
