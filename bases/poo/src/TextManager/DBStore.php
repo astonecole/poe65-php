@@ -1,32 +1,46 @@
 <?php
 
-class DBStore implements StoreHandler
+/**
+ * Class DBStore
+ */
+class DBStore implements StoreInterface
 {
     /**
-     * PDO = PHP DATA OBJECTS
      * @var PDO $pdo
      */
     private $pdo;
 
+    /**
+     * @inheritDoc
+     */
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function write(string $text)
     {
-        $sql = "INSERT INTO text (value) VALUES (?)";
+        $sql = /** @lang mysql */
+            'INSERT INTO text VALUES (1, ?) ON DUPLICATE KEY UPDATE value=?';
+
         $stmt = $this->pdo->prepare($sql);
-
         $stmt->bindValue(1, $text, PDO::PARAM_STR);
-        $ok = $stmt->execute();
+        $stmt->bindValue(2, $text, PDO::PARAM_STR);
 
-        // var_dump($ok);
+        return $stmt->execute();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function read(): string
     {
-        $sql = 'SELECT * FROM text WHERE id=?';
+        $sql = /** @lang mysql */
+            'SELECT * FROM text WHERE id=?';
+
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, 1, PDO::PARAM_INT);
         $stmt->execute();
