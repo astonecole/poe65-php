@@ -1,22 +1,28 @@
 <?php
 
-interface Removable {
+interface Removable
+{
     public function delete();
 }
 
-class Video implements Removable {
-    public function delete() {
+class Video implements Removable
+{
+    public function delete(): void
+    {
         echo 'Vidéo supprimée';
     }
 }
 
-class Word implements Removable {
-    public function delete() {
+class Word implements Removable
+{
+    public function delete(): void
+    {
         echo 'Fichier Word supprimé';
     }
 }
 
-function poubelle(Removable $object) {
+function poubelle(Removable $object): void
+{
     $object->delete();
 }
 

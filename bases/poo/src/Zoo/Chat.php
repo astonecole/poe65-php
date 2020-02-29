@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * Class Chat
+ */
 class Chat extends Felin
 {
-    public function move()
+    /**
+     * @inheritDoc
+     */
+    public function move(): string
     {
         return parent::move() . ' avec une patte en moins.';
     }

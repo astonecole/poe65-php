@@ -1,6 +1,7 @@
 <?php
 
-function buildMenu(array $data) {
+function buildMenu(array $data)
+{
     echo '<ul class="menu">';
 
     foreach ($data as $item) {

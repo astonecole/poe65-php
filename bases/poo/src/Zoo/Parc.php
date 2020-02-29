@@ -1,15 +1,26 @@
 <?php
 
-// OCP
-class Parc {
+/**
+ * Class Parc
+ */
+class Parc
+{
+    /**
+     * @var array
+     */
     private $animals = [];
 
-    public function add(Animal $animal)
+    /**
+     * @param Animal $animal
+     * @return $this
+     */
+    public function add(Animal $animal): self
     {
         $this->animals[] = $animal;
+        return $this;
     }
 
-    public function show()
+    public function show(): void
     {
         foreach ($this->animals as $a) {
             echo $a->getName() . '<br>';

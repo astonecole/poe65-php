@@ -1,22 +1,27 @@
 <?php
 
-class Store implements Countable {
+class Store implements Countable
+{
     public $products = ['Kiwi', 'Pomme', 'Banane'];
 
-    public function count() {
+    public function count(): int
+    {
         return count($this->products);
     }
 }
 
-class Company implements Countable {
+class Company implements Countable
+{
     public $employees = ['Jack', 'Martin', 'Miléna', 'Marta'];
 
-    public function count() {
+    public function count(): int
+    {
         return count($this->employees);
     }
 }
 
-function nbItems(Countable $data) {
+function nbItems(Countable $data)
+{
     return $data->count();
 }
 

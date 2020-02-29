@@ -11,6 +11,6 @@ $title = $_POST['title'] ?? '';
 $teaser = $_POST['teaser'] ?? '';
 $content = $_POST['content'] ?? '';
 $published = $_POST['published'] ?? '0';
-$category = (int) $category;
+$category = (int)$category;
 
 include 'layout.phtml';
