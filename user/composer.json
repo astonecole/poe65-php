@@ -1,0 +1,19 @@
+{
+    "name": "aston/user",
+    "type": "library",
+    "description": "Aston User Module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Letourneau",
+            "email": "vincent@nanoninja.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aston\\": "src/Aston"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
