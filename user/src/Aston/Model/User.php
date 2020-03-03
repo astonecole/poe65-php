@@ -16,7 +16,8 @@ class User
 
     public function __construct()
     {
-        echo "I'm user";
+        $this->setCreatedAt(new DateTime())
+             ->setUpdatedAt(new DateTime());
     }
 
     /**
