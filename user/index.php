@@ -1,14 +1,9 @@
 <?php
 
-ini_set('display_errors', 1);
-
-require './vendor/autoload.php';
-require './config/services.php';
+require 'init.php';
 
 $repo = $container->get('user:repository');
 $store = $repo->getStore();
+$users = $store->findAll();
 
-$user = new Aston\Model\User();
-$store->save($user);
-
-var_dump($store->findAll());
+include 'views/home.phtml';

@@ -11,9 +11,9 @@ $container->set('db', function () {
 });
 
 $container->set('user:store', function ($c) {
-    // $pdo = $c->get('db');
-    // return new Aston\Store\MySQLUserStore($pdo);
-    return new Aston\Store\UserMockStore();
+    $pdo = $c->get('db');
+    return new Aston\Store\MySQLUserStore($pdo);
+    // return new Aston\Store\UserMockStore();
 });
 
 $container->set('user:repository', function ($c) {
