@@ -23,3 +23,11 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+
+$u->setId(2);
+$s->remove($u);
+
+// echo '<pre>';
+// var_dump($s->findByEmail('john.doe@gmail.com'));
+// var_dump($s->find(2));
+// echo '</pre>';
