@@ -1,22 +1,14 @@
 <?php
 
+ini_set('display_errors', 1);
+
 require './vendor/autoload.php';
-
-$container = new Aston\Service\Container();
-
-$container->set('user:repository', function() {
-    $pdo = new PDO(
-        'mysql:host=localhost;dbname=test;port=8889;charset=utf8',
-        'root',
-        'root'
-    );
-
-    $store = new Aston\Store\MySQLUserStore($pdo);
-    $repository = new Aston\Repository\UserRepository();
-    $repository->setStore($store);
-
-    return $repository;
-});
+require './config/services.php';
 
 $repo = $container->get('user:repository');
-var_dump($repo);
+$store = $repo->getStore();
+
+$user = new Aston\Model\User();
+$store->save($user);
+
+var_dump($store->findAll());

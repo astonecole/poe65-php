@@ -23,6 +23,6 @@ class Container
             return null;
         }
 
-        return $service();
+        return $service($this);
     }
 }
