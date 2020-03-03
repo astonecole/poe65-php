@@ -1,33 +1,22 @@
 <?php
 
-ini_set('display_errors', 1);
-
 require './vendor/autoload.php';
 
-$pdo = new PDO(
-    'mysql:host=localhost;dbname=test;port=8889;charset=utf8',
-    'root',
-    'root'
-);
+$container = new Aston\Service\Container();
 
-$s = new \Aston\Store\MySQLUserStore($pdo);
-$u = new Aston\Model\User();
+$container->set('user:repository', function() {
+    $pdo = new PDO(
+        'mysql:host=localhost;dbname=test;port=8889;charset=utf8',
+        'root',
+        'root'
+    );
 
-$u->setEmail('john.doe@gmail.com')
-  ->setPassword('0000')
-  ->setFirstname('john')
-  ->setLastname('doe');
+    $store = new Aston\Store\MySQLUserStore($pdo);
+    $repository = new Aston\Repository\UserRepository();
+    $repository->setStore($store);
 
-try {
-  $s->save($u);
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
+    return $repository;
+});
 
-$u->setId(2);
-$s->remove($u);
-
-// echo '<pre>';
-// var_dump($s->findByEmail('john.doe@gmail.com'));
-// var_dump($s->find(2));
-// echo '</pre>';
+$repo = $container->get('user:repository');
+var_dump($repo);
