@@ -17,10 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $store = $container->get('user:store');
 
     try {
+        var_dump($user);
         $store->save($user);
         header('Location: index.php');
     } catch (Exception $e) {
         echo $e->getMessage();
+        exit;
     }
 }
 
