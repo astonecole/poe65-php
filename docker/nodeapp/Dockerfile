@@ -1,8 +1,10 @@
 FROM node:alpine
 
 LABEL MAINTAINER="Vincent Letourneau <vincent@nanoninja.com>"
-VOLUME [ "/usr/src/app" ]
 
-COPY . /usr/src/app
+# COPY SOURCE DESTINATION
+WORKDIR /usr/src/app
+COPY . .
+RUN npm i express
 EXPOSE 3000
-ENTRYPOINT [ "node", "/usr/src/app/index.js" ]
+CMD [ "index.js" ]
